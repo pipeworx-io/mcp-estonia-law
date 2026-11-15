@@ -1,0 +1,51 @@
+[
+  {
+    "name": "ee_law_search",
+    "description": "Search Estonian national legislation (Riigi Teataja: acts, regulations, orders) by title word or abbreviation, e.g. \"isikuandmete kaitse\" or abbreviation \"IKS\". By default only acts in force today are returned (set in_force_only=false for repealed acts and older versions too). Returns id (globaalID of the text version), title, type, issuer, validity dates, in-force status and a link; 25 per page, use page to continue. Estonian-language titles. Pair with ee_law_get for the text.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "query": {
+          "type": "string",
+          "description": "Word(s) from the Estonian title, e.g. \"isikuandmete kaitse\""
+        },
+        "abbreviation": {
+          "type": "string",
+          "description": "Official abbreviation, e.g. \"IKS\" (use instead of query)"
+        },
+        "in_force_only": {
+          "type": "boolean",
+          "description": "Only acts in force today (default true)"
+        },
+        "page": {
+          "type": "number",
+          "description": "Page number, 1-based (default 1)"
+        }
+      }
+    }
+  },
+  {
+    "name": "ee_law_get",
+    "description": "Fetch one Estonian legal act text version by id from ee_law_search (e.g. \"130062026052\" for the current Personal Data Protection Act). Returns title, abbreviation, type, issuer, adoption date, State Gazette citation, in-force dates and amendment list, and the text. Pass section (e.g. \"6\" or \"10^1\" for § 10 superscript 1) for one § only; without it the text is capped at max_chars with a contents list. Text is the consolidated version as published in Riigi Teataja, in Estonian.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Text-version id (globaalID) from ee_law_search, e.g. \"130062026052\""
+        },
+        "section": {
+          "type": "string",
+          "description": "Section (paragrahv) number, e.g. \"6\", \"10^1\" for § 10 with superscript 1"
+        },
+        "max_chars": {
+          "type": "number",
+          "description": "Cap on returned text when no section is given (default 20000, max 100000)"
+        }
+      },
+      "required": [
+        "id"
+      ]
+    }
+  }
+]

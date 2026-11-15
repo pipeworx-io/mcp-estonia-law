@@ -1,0 +1,33 @@
+{
+  "name": "@pipeworx/mcp-estonia-law",
+  "version": "0.1.0",
+  "description": "Estonia law -- Riigi Teataja, the State Gazette of the Republic of Estonia (published by the Centre of Registers and Information Systems).",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./tools.json": "./tools.json",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "mcp-estonia-law": "bin/cli.js"
+  },
+  "files": ["bin/", "lib/", "tools.json", "server.json"],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "estonia-law"],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pipeworx-io/mcp-estonia-law.git"
+  },
+  "mcpName": "io.github.pipeworx-io/estonia-law",
+  "pipeworx": {
+    "mode": "gateway",
+    "slug": "estonia-law",
+    "gatewaySlug": "estonia-law",
+    "sourceHash": "v1-a9103e04c1f9ab3027d4f59e94d1528b4dbd1c1633844e39c790eac9736d79d9",
+    "sourceCommit": "72e74cb110c2f0aa8da008f3a002d5a3c167142d"
+  }
+}
